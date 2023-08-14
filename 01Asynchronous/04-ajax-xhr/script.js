@@ -17,7 +17,7 @@
 
 //######################################
 //4 and 200 - eto yung mga need natin
-//output lang sa console.log
+// output lang sa console.log
 // const xhr = new XMLHttpRequest();
 // xhr.open("GET", "./movies.json")
 
@@ -32,28 +32,9 @@
 
 //######################################
 //Displaying the movies.json
-const xhr = new XMLHttpRequest();
-
-xhr.open("GET", "./movies.json")
-
-xhr.onreadystatechange = function () {
-   if (this.readyState === 4 && this.status === 200){
-    const data = JSON.parse(this.responseText)
-
-    data.forEach((movie) => {
-        const li = document.createElement("li")
-        li.innerHTML = `<strong>${movie.title}</strong> - ${movie.year}`
-        document.querySelector("#results").appendChild(li);
-    })
-   }
-};
-xhr.send();
-
-//##############################
-//Github api
 // const xhr = new XMLHttpRequest();
-// xhr.open("GET", "https://api.github.com/users/kodegoteacher/repos")
 
+// xhr.open("GET", "./movies.json")
 
 // xhr.onreadystatechange = function () {
 //    if (this.readyState === 4 && this.status === 200){
@@ -67,3 +48,22 @@ xhr.send();
 //    }
 // };
 // xhr.send();
+
+//##############################
+//Github api
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.github.com/users/kodegoteacher/repos")
+
+
+xhr.onreadystatechange = function () {
+   if (this.readyState === 4 && this.status === 200){
+    const data = JSON.parse(this.responseText)
+
+    data.forEach((repo) => {
+        const li = document.createElement("li")
+        li.innerHTML = `<strong>${repo.name}</strong> - ${repo.description} - ${repo.url}`
+        document.querySelector("#results").appendChild(li);
+    })
+   }
+};
+xhr.send();
