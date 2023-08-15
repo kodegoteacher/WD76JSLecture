@@ -15,7 +15,7 @@ This code challenge is designed to put into practice what you have learned so fa
 First bring in the button and the id of where you want the joke to be displayed:
 
 ```js
-//Global Variable Here
+const jokeEl = document.getElementById('joke')
 ```
 
 Next, add the event listener for the button:
